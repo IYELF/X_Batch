@@ -45,12 +45,15 @@ public class TestJob {
 	private  ItemWriter<? super Agent> dbWriter;
 	
 	@Autowired
+	private  ItemWriter<? super Agent> dbUpdate;
+	
+	@Autowired
 	private AgentSkipListener agentSkipListener;
 	
 	
 	@Bean
 	public Job fileReaderJob() {
-		return jobBuilderFactory.get("fileReaderJob21").start(fileReaderStep()).
+		return jobBuilderFactory.get("fileReaderJob22").start(fileReaderStep()).
 				listener(new JobListener()).build();
 	}
 	
@@ -64,7 +67,7 @@ public class TestJob {
 				.reader(fileReader)
 				.processor(testProcessor)
 				//.processor(processor())
-				.writer(dbWriter)
+				.writer(dbUpdate)
 				.faultTolerant()//容错  retry充实，skip跳过
 				.skip(Exception.class)//异常类型
 				.skipLimit(200)//跳过错误次数

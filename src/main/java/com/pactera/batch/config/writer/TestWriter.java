@@ -42,4 +42,14 @@ public class TestWriter{
 		writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Agent>());
 		return writer;
 	} 
+	
+	@Bean
+	public JdbcBatchItemWriter<Agent> dbUpdate() {
+		JdbcBatchItemWriter<Agent> writer = new JdbcBatchItemWriter<Agent>();
+		writer.setDataSource(dataSource);
+		writer.setSql(" update BATCH.AGENT set phone_number = :phoneNumber where id = :id");
+		writer.setItemSqlParameterSourceProvider(new BeanPropertyItemSqlParameterSourceProvider<Agent>());
+		return writer;
+	} 
+	
 }
