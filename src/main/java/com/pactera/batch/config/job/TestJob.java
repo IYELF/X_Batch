@@ -53,7 +53,7 @@ public class TestJob {
 	
 	@Bean
 	public Job fileReaderJob() {
-		return jobBuilderFactory.get("fileReaderJob22").start(fileReaderStep()).
+		return jobBuilderFactory.get("fileReaderJob23").start(fileReaderStep()).
 				listener(new JobListener()).build();
 	}
 	

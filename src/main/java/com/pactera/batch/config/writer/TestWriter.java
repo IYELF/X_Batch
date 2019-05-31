@@ -2,6 +2,7 @@ package com.pactera.batch.config.writer;
 
 import javax.sql.DataSource;
 
+import org.springframework.batch.item.ItemWriter;
 import org.springframework.batch.item.database.BeanPropertyItemSqlParameterSourceProvider;
 import org.springframework.batch.item.database.JdbcBatchItemWriter;
 import org.springframework.beans.factory.annotation.Autowired;
